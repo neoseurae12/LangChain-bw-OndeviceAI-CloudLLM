@@ -3,4 +3,6 @@
     <string name="action_go">Go</string>
     <string name="summarize_label">Text to summarize</string>
     <string name="summarize_hint">Enter text or a URL to summarize</string>
+    <string name="network_connected">Connected (-> Cloud-base LLM)</string>
+    <string name="network_disconnected">Disconnected (-> On-device AI)</string>
 </resources>

@@ -1,6 +1,8 @@
 package com.wonhui.demo.langchain_ondevice_cloudllm
 
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.clickable
@@ -34,29 +36,51 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.google.ai.client.generativeai.GenerativeModel
 import com.wonhui.demo.langchain_ondevice_cloudllm.ui.theme.DemoAiTheme
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
+
+const val TAG = "MainActivity"
 
 class MainActivity : ComponentActivity() {
+
+    private lateinit var viewModel: SummarizeViewModel
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        viewModel = SummarizeViewModel()
+
         setContent {
             DemoAiTheme {
-                // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background,
                 ) {
-                    val generativeModel = GenerativeModel(
-                        modelName = "gemini-pro",
-                        apiKey = BuildConfig.ollamaApiKey
-                    )
-                    val viewModel = SummarizeViewModel(generativeModel)
                     SummarizeRoute(viewModel)
                 }
             }
         }
+
+        // Subscribe a `networkStatus`
+        lifecycleScope.launch {
+            repeatOnLifecycle(Lifecycle.State.STARTED) {
+                MyApp.networkStatus.collectLatest { isConnected ->
+                    viewModel.switchModelByNetwork(isConnected)
+                    showNetworkStatus(isConnected)
+                }
+            }
+        }
+    }
+
+    private fun showNetworkStatus(isConnected: Boolean) {
+        val message = if (isConnected) getString(R.string.network_connected) else getString(R.string.network_disconnected)
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+        Log.d(TAG, "My Network Status: $message")
     }
 }
 

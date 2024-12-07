@@ -2,7 +2,6 @@ package com.wonhui.demo.langchain_ondevice_cloudllm
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.google.ai.client.generativeai.GenerativeModel
 import dev.langchain4j.chain.ConversationalChain
 import dev.langchain4j.memory.chat.MessageWindowChatMemory
 import dev.langchain4j.model.ollama.OllamaChatModel
@@ -16,9 +15,7 @@ import kotlinx.coroutines.launch
 import java.time.Duration
 
 
-class SummarizeViewModel(
-    private val googleModel: GenerativeModel
-) : ViewModel() {
+class SummarizeViewModel : ViewModel() {
 
 //    private val mistralAiModel = MistralAiChatModel.builder()
 //        .apiKey(AiToken.MistralAiToken)
@@ -91,6 +88,13 @@ class SummarizeViewModel(
 
     fun onModelSelected(model: Model) {
         _uiState.update { it.copy(selectedModel = model) }
+    }
+
+    fun switchModelByNetwork(isNetworkConnected: Boolean) {
+        if (isNetworkConnected)
+            _uiState.update { it.copy(selectedModel = Model.OpenAi) }
+        else
+            _uiState.update { it.copy(selectedModel = Model.Ollama) }
     }
 }
 
