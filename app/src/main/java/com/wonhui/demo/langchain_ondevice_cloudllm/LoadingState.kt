@@ -9,13 +9,3 @@ sealed interface LoadingState {
     data class Success(val outputText: String) : LoadingState
     data class Error(val errorMessage: String) : LoadingState
 }
-
-data class SummaryState(
-    val selectedModel: Model = Model.OpenAi,
-    val previousPrompt: String = "",
-    val loadingState: LoadingState = LoadingState.Initial
-) {
-    companion object {
-        val Empty = SummaryState()
-    }
-}
