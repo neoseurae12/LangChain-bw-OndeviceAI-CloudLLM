@@ -26,7 +26,6 @@ class MyApp: Application() {
         val networkRequest = NetworkRequest.Builder()
             .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
             .addTransportType(NetworkCapabilities.TRANSPORT_WIFI)
-            .addTransportType(NetworkCapabilities.TRANSPORT_CELLULAR)
             .addCapability(NetworkCapabilities.NET_CAPABILITY_NOT_METERED)  // 데이터 사용 시 X, 와이파이 사용 시 O
             .build()
 
