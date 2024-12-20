@@ -12,6 +12,7 @@ activityCompose = "1.8.2"
 composeBom = "2024.02.02"
 generativeai = "0.2.1"
 googleAndroidLibrariesMapsplatformSecretsGradlePlugin = "2.0.1"
+tasksGenai = "0.10.20"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -33,9 +34,8 @@ generativeai = { group = "com.google.ai.client.generativeai", name = "generative
 
 langchain4j = { module = "dev.langchain4j:langchain4j", version.ref = "langchain4j" }
 langchain4j-openai = { module = "dev.langchain4j:langchain4j-open-ai", version.ref = "langchain4j" }
-langchain4j-gemini = { module = "dev.langchain4j:langchain4j-vertex-ai-gemini", version.ref = "langchain4j" }
-langchain4j-mistrailai = { module = "dev.langchain4j:langchain4j-mistral-ai", version.ref = "langchain4j" }
 langchain4j-ollama = { module = "dev.langchain4j:langchain4j-ollama", version.ref = "langchain4j" }
+tasks-genai = { module = "com.google.mediapipe:tasks-genai", version.ref = "tasksGenai" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

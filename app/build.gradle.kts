@@ -69,8 +69,7 @@ dependencies {
     implementation(libs.langchain4j)
     implementation(libs.langchain4j.openai)
     implementation(libs.langchain4j.ollama)
-    //implementation(libs.langchain4j.mistrailai)
-    //implementation(libs.langchain4j.gemini)
+    implementation(libs.tasks.genai)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
