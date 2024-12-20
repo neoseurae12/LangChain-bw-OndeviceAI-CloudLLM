@@ -46,19 +46,19 @@ This application must be run on a physical Android device to take advantage of t
     Android Studio project.
 
 *   From the Open File or Project window that appears, navigate to and select
-    the mediapipe/examples/llm_inference/android directory. Click OK. You may
+    the LangChain-bw-OndeviceAI-CloudLLM-main directory. Click OK. You may
     be asked if you trust the project. Select Trust.
 
 *   If it asks you to do a Gradle Sync, click OK.
-
-*   With your Android device connected to your computer and developer mode
-    enabled, click on the green Run arrow in Android Studio.
 
 *   Declare the API Key in `local.properties`. <br>
     ```properties
     openAiApiKey="your_api_key_here"
     ```
     This ensures the API key is securely referenced during the build process and kept out of version control.
+
+*   With your Android device connected to your computer and developer mode
+    enabled, click on the green Run arrow in Android Studio.
 
 ### Models used
 
