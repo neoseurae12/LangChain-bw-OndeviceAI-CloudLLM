@@ -31,31 +31,5 @@ class MainActivity : ComponentActivity() {
 
 enum class Model(val llmName: String) {
     OpenAi(llmName = "Open AI (Cloud-based LLM)"),
-    //Gemini(llmName = "Gemini Ai"),
-    //MistralAi(llmName = "Mistral Ai"),
-    Ollama(llmName = "Ollama (On-device AI)")
-}
-
-@Composable
-fun AiModelSelector(
-    modifier: Modifier = Modifier,
-    isExpended: Boolean,
-    onDismissRequest: () -> Unit,
-    onModelSelected: (Model) -> Unit
-) {
-    DropdownMenu(
-        modifier = modifier,
-        expanded = isExpended,
-        onDismissRequest = onDismissRequest,
-        content = {
-            Model.entries.forEach { item ->
-                DropdownMenuItem(
-                    text = { Text(item.llmName) },
-                    onClick = {
-                        onModelSelected(item)
-                    }
-                )
-            }
-        }
-    )
+    Gemma2(llmName = "Gemma2 2b (On-device AI)")
 }
