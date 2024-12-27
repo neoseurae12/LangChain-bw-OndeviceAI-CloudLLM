@@ -6,7 +6,7 @@ This demo app showcases the feasibility of a Hybrid Interactive AI system that d
 
 This application must be run on a physical Android device to take advantage of the device GPU.
 
-|                     when using Wi-Fi                     |                     when using Mobile Data or going Offline                     |
+|                     when using Mobile Data or going Offline                     |                                       when using Wi-Fi                                        |
 |:--------------------------------------------------------:|:-------------------------------------------------------------------------------:|
 | ![On-device AI: Google Gemma2 2B](screenshot_gemma2.png) | ![Cloud-based LLM: Open AI GPT-3.5 Turbo](screenshot_open-ai_gpt-3.5-turbo.png) |
 
